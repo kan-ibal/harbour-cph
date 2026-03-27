@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-cph
+Exec=sailfish-qml harbour-cph
+Name=cph
+# translation example:
+# your app name in Polish locale (pl)
+Name[pl]=harbour-cph
+
+[X-Sailjail]
+Sandboxing=Disabled

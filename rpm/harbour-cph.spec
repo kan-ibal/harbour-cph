@@ -1,0 +1,76 @@
+
+Name:       harbour-cph
+
+# >> macros
+%define _binary_payload w9.gzdio
+%define _source_payload w9.gzdio
+# << macros
+
+%{!?qtc_qmake:%define qtc_qmake %qmake}
+%{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
+%{!?qtc_make:%define qtc_make make}
+%{?qtc_builddir:%define _builddir %qtc_builddir}
+Summary:    Sailfish CPH
+Version:    1.2
+Release:    0
+Group:      Qt/Qt
+License:    LICENSE
+URL:        http://example.org/
+BuildArch:  noarch
+Source0:    %{name}-%{version}.tar.bz2
+Requires:   pyotherside-qml-plugin-python3-qt5
+Requires:   libsailfishapp-launcher
+Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   qtmozembed-qt5
+Requires:   sailfish-components-webview-qt5
+Requires:   sailfish-components-webview-qt5-popups
+Requires:   sailfish-components-webview-qt5-pickers
+Requires:   curl
+BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  desktop-file-utils
+
+%description
+Captive Portals Helper app for SailfishOS
+
+
+%prep
+%setup -q -n %{name}-%{version}
+
+# >> setup
+# << setup
+
+%build
+# >> build pre
+# << build pre
+
+%qtc_qmake5 \
+    VERSION=%{version}
+
+%qtc_make %{?_smp_mflags}
+
+# >> build post
+# << build post
+
+%install
+rm -rf %{buildroot}
+# >> install pre
+# << install pre
+%qmake5_install
+
+# >> install post
+# << install post
+
+desktop-file-install --delete-original       \
+  --dir %{buildroot}%{_datadir}/applications             \
+   %{buildroot}%{_datadir}/applications/*.desktop
+
+%files
+%defattr(-,root,root,-)
+%{_datadir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+# >> files
+# << files

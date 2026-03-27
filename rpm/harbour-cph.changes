@@ -1,0 +1,21 @@
+# Rename this file as harbour-rAudio.changes to include changelog
+# entries in your RPM file.
+#
+# Add new changelog entries following the format below.
+# Add newest entries to the top of the list.
+# Separate entries from eachother with a blank line.
+
+# * date Author's Name <author's email> version-release
+# - Summary of changes
+
+* Fri Mar 27 2026 kan 1.2-0
+- housekeeping and refresh function
+
+* Sun Aug 03 2025 kan 1.1-0
+- refactoring
+
+* Sat Aug 02 2025 kan 1.1-0
+- fix for DNS dropped IP
+
+* Sat Nov 30 2024 kan 1.0-0
+- first release

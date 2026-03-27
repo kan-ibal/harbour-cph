@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=toeterm
+#Exec=invoker --type=generic -s sh -c "/usr/bin/sailjail -p sailfish-captiveportal.desktop /usr/bin/sailfish-captiveportal -captiveportal connect.sailfishos.org"
+Exec=invoker --type=generic -s sh -c "/usr/bin/sailjail -p sailfish-captiveportal.desktop /usr/bin/sailfish-captiveportal -captiveportal 8.8.8.8"
+Name=cph-sfos
+# translation example:
+# your app name in Polish locale (pl)
+Name[pl]=harbour-cph-sfos
+X-Desktop-File-Install-Version=0.26
+
+#[X-Sailjail]
+#Sandboxing=Disabled

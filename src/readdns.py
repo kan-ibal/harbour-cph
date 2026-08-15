@@ -7,7 +7,14 @@ import tempfile
 
 def connmandns():
     tempfile.tempdir = '/tmp'
-    file1 = open("/run/connman/resolv.conf", "r")
+    try:
+     f = open("/run/connman/resolv.conf")
+    except FileNotFoundError:
+     # doesn’t exist
+     file1 = open("/run/systemd/resolve/resolv.conf", "r")
+    else:
+     # exists
+     file1 = open("/run/connman/resolv.conf", "r")
     #$print("Output of Read function is ")
     #print(file1.read())
     #print()
@@ -31,7 +38,7 @@ def connmandns():
      return dns[1]
      #pyotherside.send( 'ipAddress', dns[1] )
     else:
-     proc2 = subprocess.Popen(["curl", "-I", "--max-time", "2", "--connect-timeout", "1", "--silent", dnss], cwd=tempfile.tempdir, shell=False, stdout=subprocess.PIPE)
+     proc2 = subprocess.Popen(["curl", "-I", "--max-time", "2", "--connect-timeout", "1", "--silent", "--insecure", dnss], cwd=tempfile.tempdir, shell=False, stdout=subprocess.PIPE)
      (out2, err2) = proc2.communicate()
      #print ( out2 )
      #print ( err2 )

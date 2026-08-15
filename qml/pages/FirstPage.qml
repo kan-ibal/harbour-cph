@@ -50,7 +50,7 @@ Page {
         visible: true
         anchors.fill: parent
         clip: true;
-        contentHeight: parole.height
+        contentHeight: parent.height
         contentWidth: parent.width
 
         PullDownMenu {
